@@ -9,6 +9,7 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'jacoco'
 }
 
 repositories {
@@ -25,5 +26,23 @@ dependencies {
     implementation 'com.google.guava:guava:26.0-jre'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
 }
+
+jacoco {
+   toolVersion = "0.8.1"
+   reportsDir = file("$buildDir/reports/jacoco")
+}
+
+test {
+   jacoco {
+       append = true
+       destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+   }
+}
+jacocoTestReport.dependsOn(test)
+
+
+
+
+
