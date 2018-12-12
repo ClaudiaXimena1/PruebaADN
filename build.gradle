@@ -35,6 +35,13 @@ jacoco {
    toolVersion = "0.8.1"
    reportsDir = file("$buildDir/reports/jacoco")
 }
+version='1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Prueba',
+                'Implementation-Version': version
+    }
+}
 
 test {
    jacoco {
@@ -44,12 +51,6 @@ test {
 }
 jacocoTestReport.dependsOn(test)
 
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'ProyectoADN',
-                'Implementation-Version': version
-    }
-}
 
 
 
